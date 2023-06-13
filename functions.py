@@ -1,4 +1,5 @@
 import random
+import warnings
 
 def shuffle_lines(filename: str):
 
@@ -11,7 +12,7 @@ def shuffle_lines(filename: str):
         file.writelines(lines)
 
 
-def string_as_binary(string: str):
+def string_as_binary(string: str, shape= 48):
 
     binary_string = ""
     
@@ -19,10 +20,18 @@ def string_as_binary(string: str):
         binary = bin(ord(char))[2:].zfill(8)  # 文字をASCIIコードに変換し、8ビットのバイナリ文字列に変換
         binary_string += binary
     
+    binary_string = binary_string.ljust(48,"0")
+
+    if len(binary_string) > shape:
+        warnings.warn(f"Unconstant Shape: The returned shape is unconstant. expected {shape}, but {len(binary_string)}")
+
     return binary_string
+
+
 
 if __name__ == "__main__":
 
-    filename = "./password_data/rockyou.txt"
-    shuffle_lines(filename)
+    print(string_as_binary("Hello"))
 
+    # filename = "./password_data/rockyou.txt"
+    # shuffle_lines(filename)
