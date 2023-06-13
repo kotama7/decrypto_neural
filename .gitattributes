@@ -1,2 +1,7 @@
 *.txt !text !filter !merge !diff
 *.txt filter=lfs diff=lfs merge=lfs -text
+*.csv !text !filter !merge !diff
+/password_data/* !text !filter !merge !diff
+./password_data/*.csv !text !filter !merge !diff
+./password_data/*.csv filter=lfs diff=lfs merge=lfs -text
+/password_data/*.csv filter=lfs diff=lfs merge=lfs -text
